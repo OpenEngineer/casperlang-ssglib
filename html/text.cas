@@ -1,1 +1,1 @@
-toHtml (txt::String) = txt
+toHtml txt::String = txt
