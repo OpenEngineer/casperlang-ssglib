@@ -15,17 +15,19 @@ body  attr::({} String) cs::[]         = Node "body" attr cs
 body  cs::[]                           = body {} cs
 
 nav   attr::({} String) cs::[]         = Node "nav" attr cs
-nav   cs::[]                           = nav        {}   cs
+nav   cs::[]                           = nav {} cs
 div   attr::({} String) cs::[]         = Node "div" attr cs
-div   id::String        cs::[]         = div {"id":id}   cs
-div   cs::[]                           = div        {}   cs
+div   id::String        cs::[]         = div {"id":id} cs
+div   cs::[]                           = div {} cs
 span  attr::({} String) cs::[]         = Node "span" attr cs
-span  cs::[]                           = span        {}   cs
+span  cs::[]                           = span {} cs
 
-p     attr::({} String) txt::String    = Node "p" attr [txt]
-p     txt::String                      = p        {}   txt
+p     attr::({} String) cs::[]         = Node "p" attr cs
+p     cs::[]                           = p {} cs
+p     attr::({} String) txt::String    = p attr [txt]
+p     txt::String                      = p {} txt
 a     attr::({} String) txt::String    = Node "a" attr [txt]
-a     txt::String                      = a        {}   txt
+a     txt::String                      = a {} txt
 a     href::String txt::String         = a {"href":href} txt
 b     attr::({} String) txt::String    = Node "b" attr [txt]
 b     txt::String                      = b {} txt
