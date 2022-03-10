@@ -1,0 +1,5 @@
+Br = Any
+
+toHtml Br = "<br>"
+
+br = Br
