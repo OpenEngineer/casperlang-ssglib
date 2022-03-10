@@ -16,6 +16,9 @@ span  attr::({} String) cs::[]         = Node "span" attr cs
 span  cs::[]                           = span {} cs
 pre   attr::({} String) cs::[]         = Node "pre" attr cs
 pre   cs::[]                           = pre {} cs
+code  attr::({} String) cs::[]         = Node "code" attr cs
+code  cs::[]                           = code {} cs
+code  txt::String                      = code [txt]
 
 p     attr::({} String) cs::[]         = Node "p" attr cs
 p     cs::[]                           = p {} cs
