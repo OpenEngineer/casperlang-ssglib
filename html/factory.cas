@@ -1,0 +1,60 @@
+html  attr::({} String) cs::[]         = Node "html" attr cs
+html  cs::[]                           = html {} cs
+head  cs::[]                           = Node "head" {} cs
+meta  attr::({} String)                = Node "meta" attr []
+link  attr::({} String)                = Node "link" attr []
+title txt::String                      = Node "title" {} [txt]
+body  attr::({} String) cs::[]         = Node "body" attr cs
+body  cs::[]                           = body {} cs
+
+nav   attr::({} String) cs::[]         = Node "nav" attr cs
+nav   cs::[]                           = nav {} cs
+div   attr::({} String) cs::[]         = Node "div" attr cs
+div   id::String        cs::[]         = div {"id":id} cs
+div   cs::[]                           = div {} cs
+span  attr::({} String) cs::[]         = Node "span" attr cs
+span  cs::[]                           = span {} cs
+pre   attr::({} String) cs::[]         = Node "pre" attr cs
+pre   cs::[]                           = pre {} cs
+
+p     attr::({} String) cs::[]         = Node "p" attr cs
+p     cs::[]                           = p {} cs
+p     attr::({} String) txt::String    = p attr [txt]
+p     txt::String                      = p {} txt
+a     attr::({} String) txt::String    = Node "a" attr [txt]
+a     txt::String                      = a {} txt
+a     href::String txt::String         = a {"href":href} txt
+b     attr::({} String) txt::String    = Node "b" attr [txt]
+b     txt::String                      = b {} txt
+
+h1    attr::({} String) txt::String    = Node "h1" attr [txt]
+h1    txt::String                      = h1 {} txt
+h2    attr::({} String) txt::String    = Node "h2" attr [txt]
+h2    txt::String                      = h2 {} txt
+h3    attr::({} String) txt::String    = Node "h3" attr [txt]
+h3    txt::String                      = h3 {} txt
+h4    attr::({} String) txt::String    = Node "h4" attr [txt]
+h4    txt::String                      = h4 {} txt
+h5    attr::({} String) txt::String    = Node "h5" attr [txt]
+h5    txt::String                      = h5 {} txt
+h6    attr::({} String) txt::String    = Node "h6" attr [txt]
+h6    txt::String                      = h6 {} txt
+
+ul     attr::({} String) cs::[]        = Node "ul"  attr cs
+ul     cs::[]                          = ul {} cs
+ol     attr::({} String) cs::[]        = Node "ol"  attr cs
+ol     cs::[]                          = ol {} cs
+li     attr::({} String) cs::[]        = Node "li"  attr cs
+li     cs::[]                          = li {} cs
+
+table  attr::({} String) cs::[]        = Node "table" attr cs
+thead  cs::[]                          = Node "thead" {} cs
+tbody  cs::[]                          = Node "tbody" {} cs
+tr     cs::[]                          = Node "tr"    {} cs
+td     cs::[]                          = Node "td"    {} cs
+
+canvas attr::({} String)               = Node "canvas" attr []
+input  attr::({} String)               = Node "input"  attr []
+label  attr::({} String) cs::[]        = Node "label"  attr cs
+button attr::({} String) cs::[]        = Node "button" attr cs
+button attr::({} String) txt::String   = button attr [txt]
