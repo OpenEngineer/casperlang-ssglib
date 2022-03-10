@@ -62,4 +62,4 @@ input  attr::({} String)               = Node "input"  attr []
 label  attr::({} String) cs::[]        = Node "label"  attr cs
 button attr::({} String) cs::[]        = Node "button" attr cs
 button attr::({} String) txt::String   = button attr [txt]
-img    attr::({} String)               = img attr []
+img    attr::({} String)               = Node "img" attr []
