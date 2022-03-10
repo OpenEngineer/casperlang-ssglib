@@ -1,0 +1,3 @@
+Text txt::String = Node "" {} []
+
+toHtml (Text txt) = txt

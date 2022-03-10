@@ -1,0 +1,3 @@
+Doc child::Node = Any
+
+toHtml (Doc child) = "<!DOCTYPE html>" + (toHtml child)

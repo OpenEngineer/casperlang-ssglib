@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "std": {
+      "url": "github.com/openengineer/casperlang-stdlib",
+      "version": "v0.1.4"
+    }
+  }
+}

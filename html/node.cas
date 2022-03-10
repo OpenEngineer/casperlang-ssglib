@@ -1,0 +1,48 @@
+import "std"
+
+Node name::String attr::({} String) cs::([] Node) = Any
+
+toHtml (Node name attr cs) = "<" + name + (toHtml attr) + ">" + (join "" (map \(toHtml $) cs)) + "</" + name + ">"
+toHtml attr::({} String) = if (len attr) > 0 " " + (map \(key=$1; val=$2; key + "=\"" + val + "\"") attr | join " ") ""
+
+html  attr::({} String) cs::([] Node)  = Node "html" attr cs
+head  cs::([] Node)                    = Node "head" {} cs
+meta  attr::({} String)                = Node "meta" attr []
+link  attr::({} String)                = Node "link" attr []
+title txt::String                      = Node "title" {} [Text txt]
+body  attr::({} String) cs::([] Node)  = Node "body" attr cs
+body  cs::([] Node)                    = body {} cs
+nav   attr::({} String) cs::([] Node)  = Node "nav" attr cs
+nav   cs::([] Node)                    = nav {} cs
+div   attr::({} String) cs::([] Node)  = Node "div" attr cs
+div   cs::([] Node)                    = div {} cs
+span  attr::({} String) cs::([] Node)  = Node "span" attr cs
+span  cs::([] Node)                    = span {} cs
+p     attr::({} String) txt::String    = Node "p" attr [Text txt]
+p     txt::String                      = p {} txt
+a     attr::({} String) txt::String    = Node "a" attr [Text txt]
+a     txt::String                      = a {} txt
+b     attr::({} String) txt::String    = Node "b" attr [Text txt]
+b     txt::String                      = b {} txt
+h1    attr::({} String) txt::String    = Node "h1" attr [Text txt]
+h1    txt::String                      = h1 {} txt
+h2    attr::({} String) txt::String    = Node "h2" attr [Text txt]
+h2    txt::String                      = h2 {} txt
+h3    attr::({} String) txt::String    = Node "h3" attr [Text txt]
+h3    txt::String                      = h3 {} txt
+h4    attr::({} String) txt::String    = Node "h4" attr [Text txt]
+h4    txt::String                      = h4 {} txt
+h5    attr::({} String) txt::String    = Node "h5" attr [Text txt]
+h5    txt::String                      = h5 {} txt
+h6    attr::({} String) txt::String    = Node "h6" attr [Text txt]
+h6    txt::String                      = h6 {} txt
+canvas attr::({} String)               = Node "canvas" attr []
+input  attr::({} String)               = Node "input"  attr []
+label  attr::({} String) cs::([] Node) = Node "label"  attr cs
+button attr::({} String) cs::([] Node) = Node "button" attr cs
+button attr::({} String) txt::String   = button attr [Text txt]
+table  attr::({} String) cs::([] Node) = Node "table" attr cs
+thead  cs::([] Node)                   = Node "thead" {} cs
+tbody  cs::([] Node)                   = Node "tbody" {} cs
+tr     cs::([] Node)                   = Node "tr"    {} cs
+td     cs::([] Node)                   = Node "td"    {} cs

@@ -1,0 +1,4 @@
+import "std"
+
+write path::String node::Node = 
+  err = overwrite (File path) (toHtml (Doc node)); herr err; void
