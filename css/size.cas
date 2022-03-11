@@ -1,0 +1,36 @@
+import "std"
+
+Unit name::String = Any
+
+Size u::Unit v = Any
+
+toCss (Size (Unit name) value) = (show value) + name
+toCss v::Float = show v
+toCss i::Int = show i
+
+px  = Unit "px"
+pt  = Unit "pt"
+em  = Unit "em"
+rem = Unit "rem"
+vh  = Unit "vh"
+vw  = Unit "vw"
+fr  = Unit "fr"
+pct = Unit "%"
+
+. v::Float u::Unit = Size u v
+. v::Int u::Unit = Size u v
+
++ (Size u a)  (Size u_ b) =
+  if (u != u_) 
+    (panic "units not the same: " + u + " != " + u_)
+    (Size u a+b)
+
+- (Size u a)  (Size u_ b) =
+  if (u != u_) 
+    (panic "units not the same: " + u + " != " + u_)
+    (Size u a-b)
+
+* a::Float (Size u v) = Size u v*a
+* a::Int (Size u v)   = Size u v*a
+* (Size u v) b::Float = Size u v*b
+* (Size u v) b::Int   = Size u v*b

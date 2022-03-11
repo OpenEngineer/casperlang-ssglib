@@ -1,0 +1,45 @@
+import "std"
+
+# query can have other queries as children
+Rule q::String attr::[] = Any
+
+isRule Rule = True
+isRule Any = False
+
+_joinQuery a::String b::String = if ((len b) > 0) (
+  if ((b.0 | assertJust) == ":") (a+b) (if (len a) > 0 a+" "+b b)
+) a
+
+_flatten pq::String r::(Rule q attr) =
+  [rSub::([] Rule), aSub::([] Attr)] = (fold \(
+    [rLst, aLst] = $1; 
+    if (isRule $2) [rLst+[$2], aLst] [rLst, aLst + [$2]]
+  ) [[],[]] attr);
+  newQ = _joinQuery pq q;
+  (if ((len aSub) > 0) [Rule newQ aSub] []) + (map \(_flatten newQ $) rSub)
+
+toCss attr::([] Attr) = map \("  " + (toCss $)) attr
+
+toCss r::Rule =
+  rs = _flatten "" r;
+  map \(
+    (Rule q attr) = $; 
+    q + "{\n" + (join "\n" (toCss attr)) + "\n}"
+  ) rs | join "\n"
+
+toCss rs::([] Rule) = map \(toCss $) rs | join "\n"
+
+id    id::String  attr::[]  = Rule "#" +id     attr
+class name::String attr::[] = Rule "." + name attr
+body attr::[]               = Rule "body"     attr
+nav  attr::[]               = Rule "nav"      attr
+h1   attr::[]               = Rule "h1"       attr
+h2   attr::[]               = Rule "h2"       attr
+h3   attr::[]               = Rule "h3"       attr
+h4   attr::[]               = Rule "h4"       attr
+h5   attr::[]               = Rule "h5"       attr
+h6   attr::[]               = Rule "h6"       attr
+p    attr::[]               = Rule "p"        attr
+img  attr::[]               = Rule "img"      attr
+hover attr::[]              = Rule "hover"    attr
+before attr::[]             = Rule "before"   attr

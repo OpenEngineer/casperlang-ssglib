@@ -1,0 +1,4 @@
+import "std"
+
+writeCss path::String rs::([] Rule) = 
+  err = overwrite (Path path) (toCss rs); herr err; void

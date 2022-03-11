@@ -1,0 +1,18 @@
+import "std"
+
+Color c::Int = Any
+
+color c::Int = Color c
+
+toCss (Color c) = 
+  r = toInt (toFloat c)/(256.0*256.0);
+  g = toInt (toFloat c-256*256*r)/256.0;
+  b = c-256*256*r-256*g;
+  "#" + (_hex256 r) + (_hex256 g) + (_hex256 b)
+
+_hex256 c::Int = 
+  a = toInt (toFloat c)/16.0;
+  b = c-16*a;
+  (_hex16 a) + (_hex16 b)
+
+_hex16 c::Int = ["0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f"].c | assertJust

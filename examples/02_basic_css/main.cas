@@ -1,0 +1,6 @@
+import "../../css"
+
+main =
+  writeCss "out.css" ([
+    body [border "ablabla", textColor (color 0x333333)]
+  ])
