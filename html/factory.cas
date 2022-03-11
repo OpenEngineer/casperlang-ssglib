@@ -28,6 +28,7 @@ p     txt::String                      = p {} txt
 a     attr::({} String) cs::[]         = Node "a" attr cs
 a     attr::({} String) txt::String    = a attr [txt]
 a     txt::String                      = a {} txt
+a     href::String cs::[]              = a {"href":href} cs
 a     href::String txt::String         = a {"href":href} txt
 b     attr::({} String) txt::String    = Node "b" attr [txt]
 b     txt::String                      = b {} txt
