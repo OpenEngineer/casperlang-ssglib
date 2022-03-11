@@ -3,6 +3,7 @@ html  cs::[]                           = html {} cs
 head  cs::[]                           = Node "head" {} cs
 meta  attr::({} String)                = Node "meta" attr []
 link  attr::({} String)                = Node "link" attr []
+css   href::String                     = link {"rel":"stylesheet", "type":"text/css", "href": href}
 title txt::String                      = Node "title" {} [txt]
 body  attr::({} String) cs::[]         = Node "body" attr cs
 body  cs::[]                           = body {} cs
